@@ -24,9 +24,9 @@ public class UserController {
         return ResponseEntity.status(200).body(user);
     }
     @PostMapping("/login")
-    public ResponseEntity<User> login( @RequestBody User user) throws UserNotFound {
+    public User login( @RequestBody User user) throws UserNotFound {
         User loginUser = userService.loginUser(user.getEmail(), user.getPassword());
-        return ResponseEntity.status(200).body(loginUser);
+        return loginUser;
     }
     @GetMapping("/user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable int id) throws UserNotFound {
